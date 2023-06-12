@@ -1,0 +1,19 @@
+{
+  "name": "@frugal-cloud/frontend-sdk",
+  "version": "0.0.1-beta1",
+  "description": "Frontend SDK for interacting with the core",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frugal-cloud/frontend-sdk.git"
+  },
+  "author": "viridian035",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frugal-cloud/frontend-sdk/issues"
+  },
+  "homepage": "https://github.com/frugal-cloud/frontend-sdk#readme"
+}
