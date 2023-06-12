@@ -27,14 +27,15 @@ export default class Connection {
 	readonly ws: WebSocket;
 	readonly replyHandlers = new Map<string, ReplyHandler>();
 
-	constructor() {
-		const address = `ws://${window.location.origin}`;
+	constructor(cb: (connection: Connection) => void) {
+		const address = `ws://${window.location.host}`;
 		this.ws = new WebSocket(address);
 
 		this.ws.onopen = () => {
 			this.ws.onmessage = (ev: MessageEvent) => {
 				this.receiveMessage(ev);
 			};
+			cb(this);
 		};
 	}
 
