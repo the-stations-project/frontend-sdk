@@ -27,7 +27,7 @@ export default class Connection {
 	readonly ws: WebSocket;
 	readonly replyHandlers = new Map<string, ReplyHandler>();
 
-	constructor(cb: (connection: Connection) => void) {
+	constructor(cb: (cloud: Connection) => void) {
 		const address = `ws://${window.location.host}`;
 		this.ws = new WebSocket(address);
 
