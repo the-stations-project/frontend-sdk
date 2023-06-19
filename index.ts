@@ -33,14 +33,14 @@ export default class Connection {
 
 		this.ws.onopen = () => {
 			this.ws.onmessage = (ev: MessageEvent) => {
-				this.receiveMessage(ev);
+				this.processMessage(ev);
 			};
 			cb(this);
 		};
 	}
 
 	//messages
-	receiveMessage(ev: MessageEvent<any>) {
+	processMessage(ev: MessageEvent<any>) {
 		const message = ev.data.toString();
 
 		try {
@@ -56,19 +56,19 @@ export default class Connection {
 		const reply = message.reply;
 
 		const handler = this.replyHandlers.get(id);
-		if (!handler) return this.handleNewMessage(message);
+		if (!handler) return this.processForeignMessage(message);
 
 		handler(reply);
 		if (reply == 'end') this.replyHandlers.delete(id);
 	}
 
-	handleNewMessage(message: Message) {
+	processForeignMessage(message: Message) {
 		const channel = message.channel;
 		if (!channel) return console.warn(`received unrequested message with no channel:\n${JSON.stringify(message, null, 4)}`);
-
-		switch (channel) {
-		}
+		this.handleMessage(channel, message);
 	}
+
+	handleMessage(channel: string, message: Message) {}
 
 	sendMessage(messageObject: Message, replyHandler: ReplyHandler) {
 		messageObject.id = uuid();

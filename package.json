@@ -1,5 +1,5 @@
 {
-  "name": "@frugal-cloud/frontend-sdk",
+  "name": "@stpr/frontend-sdk",
   "version": "0.0.1-beta1",
   "description": "Frontend SDK for interacting with the core",
   "main": "index.js",
